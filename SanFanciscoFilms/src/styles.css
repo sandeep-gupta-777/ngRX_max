@@ -1,0 +1,35 @@
+*{
+  border-radius: 0 !important;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+.border1{
+  border:2px solid red;
+}
+
+.bg-blackish-custom{
+  background-color: #1e4444 !important;
+}
+.border-blackish-custom{
+  border: 1px solid #1e4444 !important;
+}
+.text-blackish{
+  color: #1e4444 !important;
+}
+
+
+.fa{
+  width: 15px;
+  font-size: 15px;
+  color: white;
+}
+.box{
+  width: 100px;
+  height: 100px;
+  color:yellow;
+  border: 1px solid white;
+  background-color: lightgray;
+}

@@ -1,0 +1,70 @@
+<div class="container bg-white">
+
+
+  <!--TODO: find a better way to center text below-->
+  <div class="row bg-blackish-custom d-flex align-content-center " style="height: 55px">
+    <div class="col-3">
+      <p class="text-white pl-3 px-0 mx-0 display-1 mt-2  " style="font-size: 30px !important;">
+        <!--SF Films!-->
+      </p>
+    </div>
+
+
+    <div class="col-5 ">
+
+      <form contentEditable  class="pt-1" style="position: relative"
+
+
+            (focusout)="searchBoxBlurred()"
+            (keydown)="onKeyDown($event)"
+
+
+      >
+
+        <input type="text"  name="search" placeholder="Search..."
+               (focus)="searchBoxFoucessed()"
+               autocomplete="off"
+               [(ngModel)]="keyword" (ngModelChange)="performSearch($event)">
+        <div *ngIf="typeaheads.length > 0 && showTypeahead">
+          <div *ngFor="let typeahead of typeaheads; let i = index"
+
+               class="typeahead px-2 d-flex align-items-center link-cursor"
+               (click)="typeaheadClicked(typeahead)"
+               [ngClass]="{'bg-blackish-custom':i===highlightedTypeaheadCount,'text-white':i===highlightedTypeaheadCount}"
+               style="cursor: pointer"
+               [ngStyle]="{top:((55+32*(i))+'px')}" >
+            <div>{{typeahead}}</div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-4 d-flex align-items-center">
+      <div class="dropdown justify-content-end">
+        <button class="btn  btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Search By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="search_mode='Locations'" [ngClass]="{'bg-dark':search_mode==='Locations', 'text-white':search_mode==='Locations'}">Places</a>
+          <a class="dropdown-item" (click)="search_mode='Title'" [ngClass]="{'bg-dark':search_mode==='Title', 'text-white':search_mode==='Title'}">Movies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row justify-content-center">
+    <div class="col-12 p-3">
+
+      <div class="container">
+        <!--map start-->
+        <div id="map" style="height: 80vh;width: 100%"></div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
