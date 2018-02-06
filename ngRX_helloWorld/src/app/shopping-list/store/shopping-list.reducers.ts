@@ -64,6 +64,13 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
         editedIngredient:editedIngredient,
         editedIngredientIndex:action.payload
       };
+      case ShoppingListActions.STOP_EDIT:
+      console.log(action);
+      return {
+        ...state,
+        editedIngredient:null,
+        editedIngredientIndex:-1
+      };
     default:
       return state;
   }
