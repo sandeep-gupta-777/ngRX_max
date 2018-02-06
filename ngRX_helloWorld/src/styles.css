@@ -1,0 +1,24 @@
+*{
+  border-radius: 0 !important;
+}
+
+.border1{
+  border:2px solid red;
+}
+
+.bg-blackish-custom{
+  background-color: #1e4444 !important;
+}
+.border-blackish-custom{
+  border: 1px solid #1e4444 !important;
+}
+.text-blackish{
+  color: #1e4444 !important;
+}
+
+
+.fa{
+  width: 15px;
+  font-size: 15px;
+  color: white;
+}

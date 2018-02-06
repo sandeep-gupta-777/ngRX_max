@@ -1,0 +1,171 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.border1{
+    border: 2px solid red;
+}
+body{
+    font-family:"Lato", sans-sarif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.7;
+    /*Spacing between two text lines*/
+    color:#777;
+    padding:30px;
+    /*padding properties will get not inherited
+     But font properties will get inherited usually
+     */
+}
+
+.header{
+    position: relative;
+    height: 95vh;
+    background-image: linear-gradient(to right,rgba(89, 212, 250, 0.5), rgba(31, 8, 238, 0.589) ) ,url(../img/hero.jpg);
+    /*to right: gradient should go from left to right, notice this is without quotes
+    other options: to right bottom
+    */
+     background-size: cover; 
+    /*cover:1. Basically it zooms in until the inner most edges are touching the side, which means that some of the image may be cut off unlike 100% where all of the image will be visible.
+     2. you won't be left with any empty spots in your div
+    https://stackoverflow.com/questions/24654996/what-is-the-difference-between-background-size-cover-and-background-size-100
+    */
+    background-position: top;
+    /*top of image will never be cropped 
+    other options: bottom, center etc
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    /*these coordinates are with respect to current div content*/
+    /*border:3px red solid*/
+    /* border are not see at points where div is clipped */
+}
+
+
+.logo-box{
+    position: absolute;
+    top:40px;
+    left: 40px;
+}
+.logo{
+    height: 35px;
+}
+.text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    /*top and bottom are wrt parent, transform % are wrt self*/
+}
+.heading-primary{
+    color:white;
+
+}
+.heading-primary-main{
+    display: block;
+    letter-spacing: 30px;
+    font-weight: 400;
+    font-size: 80px;
+    text-transform: uppercase;
+    animation: moveInLeft 1s;
+}
+.heading-primary-sub{
+    display: block;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    animation: moveInRight 1s;
+    margin-bottom: 40px;
+}
+
+@keyframes moveInLeft {
+    0%{
+        transform: translate(-100px);
+    }
+    80%{
+        transform: translate(10px);
+    }
+    100%{
+        transform: translate(0px);
+    }
+}
+
+@keyframes moveInRight {
+    0%{
+        transform: translate(100px);
+    }
+    80%{
+        transform: translate(-10px);
+    }
+    100%{
+        transform: translate(0px);
+    }
+}
+.btn{
+    text-decoration: none;
+    background: white;
+    padding: 15px 25px ;
+    border-radius: 400px;
+    display: inline-block;
+    position: relative;
+    backface-visibility: hidden;
+    /*inline element is not transformation
+    https://stackoverflow.com/questions/14883250/css-transform-doesnt-work-on-inline-elements
+    */
+    transition: all .1s ease-out .75s;
+}
+.btn-animated{
+    animation: moveInBottom .5s;
+}
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    /*shadow in x, y, blur of shadow, color of shadow*/
+}
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+.btn::after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: white;
+    /*padding: 15px 25px ;*/
+    border-radius: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+
+}
+
+@keyframes moveInBottom {
+    0%{
+        transform: translate(0,200px);
+    }
+    80%{
+        transform: translate(0,-10px);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
+
